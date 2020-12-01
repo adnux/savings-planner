@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import dayjs = require('dayjs');
 import * as React from 'react';
 import SavingsContext from '../../../contexts/SavingsContext';
+import useKeyPress from '../../../hooks/useKeyPress';
 import { Goal, Left, Month, Right, Selected, Selector, Year } from './Styled';
 
 export const MonthSelector: React.FC = () => {
@@ -14,7 +16,7 @@ export const MonthSelector: React.FC = () => {
         .date(1)
         .add(1, 'month')
         .toDate();
-        calculateSavings({ ...state, dueDate: newDate });
+      calculateSavings({ ...state, dueDate: newDate });
     } else {
       const newDate = dayjs(dueDate)
         .date(1)
@@ -29,6 +31,17 @@ export const MonthSelector: React.FC = () => {
       }
     }
   };
+
+  const left = useKeyPress('ArrowLeft');
+  const right = useKeyPress('ArrowRight');
+  React.useEffect(() => {
+    if (left) {
+      handleChange(-1);
+    }
+    if (right) {
+      handleChange(1);
+    }
+  }, [left, right]);
 
   return (
     <Goal>
