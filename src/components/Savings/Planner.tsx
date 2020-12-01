@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import MonthGoal from './MonthGoal';
-import { Header } from './Header';
+import MonthAmount from './Month/MonthAmount';
+import { Header } from './Header/Header';
 import { Confirm } from './Confirm';
+import { TotalAmount } from './Total/TotalAmount';
 
 const Card = styled.div`
   /* height: 511px; */
@@ -21,7 +22,8 @@ const Planner = () => {
   return (
     <Card>
       <Header />
-      <MonthGoal />
+      <TotalAmount />
+      <MonthAmount />
       <Confirm />
     </Card>
   );

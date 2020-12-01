@@ -1,24 +1,23 @@
-import * as React from 'react';
 import styled from 'styled-components';
-import House from '../../icons/house.svg';
+import House from '../../../icons/house.svg';
 
-const Styled = styled.div`
+export const Styled = styled.div`
   margin-bottom: 24px;
   text-align: left;
 `;
 
-const Icon = styled(House)`
+export const Icon = styled(House)`
   width: 64px;
   height: 64px;
 `;
 
-const Text = styled.span`
+export const Text = styled.span`
   display: inline-block;
   vertical-align: top;
   margin: 0 16px;
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   font-family: Rubik;
   font-style: normal;
   font-weight: 500;
@@ -28,7 +27,7 @@ const Title = styled.div`
   color: #1e2a32;
 `;
 
-const SubTitle = styled.div`
+export const SubTitle = styled.div`
   font-family: Work Sans;
   font-style: normal;
   font-weight: normal;
@@ -38,15 +37,3 @@ const SubTitle = styled.div`
 
   color: #708797;
 `;
-
-export const Header = () => {
-  return (
-    <Styled>
-      <Icon />
-      <Text>
-        <Title>Buy a house</Title>
-        <SubTitle>Saving goal</SubTitle>
-      </Text>
-    </Styled>
-  );
-};
