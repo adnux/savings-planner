@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Logo from './components/Header/Logo';
 import Helmet from 'react-helmet';
 import GlobalStyle from './styles/globals';
+import GlobalContext from './contexts';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -22,7 +23,9 @@ const App: React.FunctionComponent = () => {
       <Header>
         <Logo />
       </Header>
-      <Content />
+      <GlobalContext>
+        <Content />
+      </GlobalContext>
     </>
   );
 };

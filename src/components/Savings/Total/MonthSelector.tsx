@@ -1,17 +1,53 @@
+import dayjs = require('dayjs');
 import * as React from 'react';
+import SavingsContext from '../../../contexts/SavingsContext';
 import { Goal, Left, Month, Right, Selected, Selector, Year } from './Styled';
 
-export const MonthSelector = () => {
+export const MonthSelector: React.FC = () => {
+  const { calculateSavings, state } = React.useContext(SavingsContext);
+  const { dueDate } = state;
+  const month = dayjs(dueDate).format('MMMM');
+  const year = dayjs(dueDate).format('YYYY');
+  const handleChange = (value: number) => {
+    if (value > 0) {
+      const newDate = dayjs(dueDate)
+        .date(1)
+        .add(1, 'month')
+        .toDate();
+        calculateSavings({ ...state, dueDate: newDate });
+    } else {
+      const newDate = dayjs(dueDate)
+        .date(1)
+        .subtract(1, 'month')
+        .toDate();
+      if (
+        dayjs()
+          .date(1)
+          .isBefore(dayjs(newDate))
+      ) {
+        calculateSavings({ ...state, dueDate: newDate });
+      }
+    }
+  };
+
   return (
     <Goal>
       Reach goal by
       <Selector>
-        <Left />
+        <Left
+          onClick={() => {
+            handleChange(-1);
+          }}
+        />
         <Selected>
-          <Month>October</Month>
-          <Year>2021</Year>
+          <Month>{month}</Month>
+          <Year>{year}</Year>
         </Selected>
-        <Right />
+        <Right
+          onClick={() => {
+            handleChange(1);
+          }}
+        />
       </Selector>
     </Goal>
   );

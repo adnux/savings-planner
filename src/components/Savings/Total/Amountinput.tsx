@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import SavingsContext from '../../../contexts/SavingsContext';
 import Dollar from '../../../icons/dollar.svg';
 
 const Wrapper = styled.div`
@@ -35,18 +36,19 @@ const Input = styled.input`
   line-height: 29px;
   color: #4d6475;
   width: 80%;
-  /* display: inline-block; */
-  /* @media (min-width: 768px) {
-    max-width: 50%;
-  } */
 `;
 
-export const Amountinput = () => {
+export const Amountinput: React.FC = () => {
+  const { calculateSavings, state } = React.useContext(SavingsContext);
+  const { amount } = state;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    calculateSavings({ ...state, amount: parseInt(event.target.value) });
+  };
   return (
     <Wrapper>
       Total amount
       <Amount>
-        <DollarDign /> <Input value="25,000" />
+        <DollarDign /> <Input value={amount} onChange={handleChange} />
       </Amount>
     </Wrapper>
   );

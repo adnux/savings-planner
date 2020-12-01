@@ -15,6 +15,7 @@ export const Selector = styled.div`
   box-sizing: border-box;
   border-radius: 4px;
   padding: 7px;
+  min-width: 195px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,6 +26,8 @@ export const Left = styled(Arrow)`
   height: 24px;
   padding: 2px;
   margin: 10px;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  /* display: ${props => (props.disabled ? 'none' : '')}; */
 `;
 
 export const Right = styled(Arrow)`
@@ -32,6 +35,7 @@ export const Right = styled(Arrow)`
   height: 24px;
   padding: 2px;
   margin: 10px;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   transform: rotate(180deg);
 `;
 

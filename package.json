@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@svgr/parcel-plugin-svgr": "^5.5.0",
+    "dayjs": "^1.9.6",
     "icons": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
